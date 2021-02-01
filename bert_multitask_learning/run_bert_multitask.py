@@ -111,14 +111,14 @@ def _train_bert_multitask_keras_model(train_dataset: tf.data.Dataset,
         save_weights_only=True,
         monitor='val_mean_acc',
         mode='auto',
-        save_best_only=False)
+        save_best_only=True)
 
     tensorboard_callback = tf.keras.callbacks.TensorBoard(
         log_dir=params.ckpt_dir)
     if mirrored_strategy is not None:
         with mirrored_strategy.scope():
             model.fit(
-                x=train_dataset,
+                x=train_dataset.repeat(),
                 validation_data=eval_dataset,
                 epochs=params.train_epoch,
                 callbacks=[model_checkpoint_callback, tensorboard_callback],
@@ -126,7 +126,7 @@ def _train_bert_multitask_keras_model(train_dataset: tf.data.Dataset,
             )
     else:
         model.fit(
-            x=train_dataset,
+            x=train_dataset.repeat(),
             validation_data=eval_dataset,
             epochs=params.train_epoch,
             callbacks=[model_checkpoint_callback, tensorboard_callback],

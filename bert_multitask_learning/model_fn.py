@@ -291,6 +291,9 @@ class BertMultiTask(tf.keras.Model):
         )
         self.mean_acc = tf.keras.metrics.Mean(name='mean_acc')
 
+
+
+
     def train_step(self, data):
 
         with tf.GradientTape() as tape:

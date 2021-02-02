@@ -22,9 +22,9 @@ from torch.utils.data import Dataset
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--corpus', type=str, default='/home/zeng/two-step/data/corpus.jsonl')
-parser.add_argument('--train', type=str, default='/home/zeng/two-step/data/claims_train.jsonl')
-parser.add_argument('--dev', type=str, default='/home/zeng/two-step/data/claims_dev.jsonl')
+parser.add_argument('--corpus', type=str, default='/data//home/acw560/two-step/data/corpus.jsonl')
+parser.add_argument('--train', type=str, default='/data//home/acw560/two-step/data/claims_train.jsonl')
+parser.add_argument('--dev', type=str, default='/data/home/acw560/two-step/data/claims_dev.jsonl')
 parser.add_argument('--epochs', type=int, default=10)
 parser.add_argument('--model_name', type=str, default='prajjwal1/bert-tiny')
 parser.add_argument('--model', type=str, default='TFAutoModel')
